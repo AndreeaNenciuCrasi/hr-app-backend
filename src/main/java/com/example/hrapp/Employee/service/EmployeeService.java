@@ -1,5 +1,6 @@
 package com.example.hrapp.Employee.service;
 
+import com.example.hrapp.Employee.exception.UserNotFoundException;
 import com.example.hrapp.Employee.model.Employee;
 import com.example.hrapp.Employee.repo.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class EmployeeService {
     }
 
     public Employee findEmployeeById(Long id){
-        return employeeRepository.findEmployeeById(id).orElseThrow(()-> new UserPrincipalNotFoundException("user by id " + id + " was not found"));
+        return employeeRepository.findEmployeeById(id).orElseThrow(()-> new UserNotFoundException("User by id " + id + " was not found"));
     }
 
     public void deleteEmployee(Long id){
